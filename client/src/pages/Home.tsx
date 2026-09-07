@@ -117,6 +117,7 @@ function AppNotice({ message }: { message: string }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [notice, setNotice] = useState("");
+  const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -128,6 +129,14 @@ export default function Home() {
     window.setTimeout(() => setNotice(""), 2800);
   };
 
+  const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    setIsNavigating(true);
+    setMenuOpen(false);
+    window.setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" }), 180);
+    window.setTimeout(() => setIsNavigating(false), 620);
+  };
+
   return (
     <main id="top" className="hero-shell">
       <video className="hero-video" autoPlay loop muted playsInline poster="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2200&q=85" aria-hidden="true">
@@ -136,15 +145,15 @@ export default function Home() {
       <div className="video-fallback" aria-hidden="true" />
       <div className="video-overlay" aria-hidden="true" />
       <div className="video-tint" aria-hidden="true" />
+      <div className={`route-transition ${isNavigating ? "active" : ""}`} aria-hidden="true"><span /><span /><span /></div>
 
       <header className="site-nav">
         <Logo />
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {navItems.map((item) => <a href={item.href} key={item.label}>{item.label}{item.chevron && <ChevronDown size={14} />}</a>)}
+          {navItems.map((item) => <a href={item.href} key={item.label} onClick={(event) => handleNavClick(event, item.href)}>{item.label}{item.chevron && <ChevronDown size={14} />}</a>)}
         </nav>
         <div className="nav-actions">
           <button className="language-pill" type="button" onClick={() => showNotice("Tamil support is ready for the next onboarding step.")}>தமிழ் / EN</button>
-          <button className="nav-cta" type="button" onClick={() => showNotice("List Harvest starts with Mobile Number / OTP.")}>List Harvest <ArrowUpRight size={15} /></button>
         </div>
         <button className={`menu-button ${menuOpen ? "open" : ""}`} type="button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}><Menu className="menu-icon" size={20} /><X className="close-icon" size={20} /></button>
       </header>
@@ -152,7 +161,7 @@ export default function Home() {
       <div className={`mobile-backdrop ${menuOpen ? "visible" : ""}`} onClick={() => setMenuOpen(false)} aria-hidden="true" />
       <aside className={`mobile-drawer ${menuOpen ? "visible" : ""}`} aria-label="Mobile navigation">
         <div className="drawer-head"><Logo /><button type="button" className="drawer-close" aria-label="Close navigation" onClick={() => setMenuOpen(false)}><X size={20} /></button></div>
-        <nav className="drawer-links">{navItems.map((item, index) => <a href={item.href} key={item.label} style={{ transitionDelay: `${index * 55}ms` }} onClick={() => setMenuOpen(false)}>{item.label}{item.chevron && <ChevronDown size={17} />}</a>)}</nav>
+        <nav className="drawer-links">{navItems.map((item, index) => <a href={item.href} key={item.label} style={{ transitionDelay: `${index * 55}ms` }} onClick={(event) => handleNavClick(event, item.href)}>{item.label}{item.chevron && <ChevronDown size={17} />}</a>)}</nav>
         <button className="drawer-language" type="button" onClick={() => showNotice("Tamil support is ready for the next onboarding step.")}>தமிழ் / EN</button>
         <button className="nav-cta drawer-cta" type="button" onClick={() => { setMenuOpen(false); showNotice("List Harvest starts with Mobile Number / OTP."); }}>List Harvest <ArrowUpRight size={16} /></button>
       </aside>
