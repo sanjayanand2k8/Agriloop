@@ -11,3 +11,36 @@
 .page-transition { position: fixed; z-index: 100; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 0 8vw; pointer-events: none; opacity: 0; background: rgba(4, 24, 15, .2); backdrop-filter: blur(0); transition: opacity 220ms ease, backdrop-filter 220ms ease; }
 .page-transition.active { opacity: 1; backdrop-filter: blur(5px); }
 @media (prefers-reduced-motion: reduce) { .page-transition { display: none; } }
+
+
+/* Prototype role access */
+.role-login { min-height: 100svh; position: relative; overflow: hidden; background: #061c14; color: #fffdf5; }
+.role-login-glow { position: absolute; inset: 0; opacity: .8; background: radial-gradient(circle at 78% 15%, rgba(183,230,120,.18), transparent 32%), linear-gradient(135deg, rgba(8,57,37,.9), #061c14 64%); }
+.role-login-inner { position: relative; z-index: 1; width: min(760px, 100%); min-height: 100svh; margin: 0 auto; padding: 34px 28px 60px; display: flex; flex-direction: column; justify-content: center; }
+.role-login-copy { max-width: 570px; margin: 90px 0 34px; }
+.role-login-copy h1 { margin: 16px 0; font-size: clamp(3.4rem, 8vw, 6.5rem); letter-spacing: -.08em; line-height: .92; }
+.role-login-copy h1 em { color: #b7e678; font-style: normal; }
+.role-login-copy p { max-width: 470px; color: rgba(255,255,255,.62); font-size: 15px; line-height: 1.6; }
+.role-options { display: grid; gap: 12px; max-width: 620px; }
+.role-option { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid rgba(255,255,255,.16); border-radius: 16px; color: #fff; background: rgba(255,255,255,.08); text-align: left; backdrop-filter: blur(16px); transition: transform .18s cubic-bezier(.23,1,.32,1), border-color .18s ease, background .18s ease; }
+.role-option:hover { transform: translateY(-2px); border-color: rgba(183,230,120,.62); background: rgba(183,230,120,.12); }
+.role-option:active { transform: scale(.98); }
+.role-option .role-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; color: #071c14; background: #b7e678; }
+.role-option strong, .role-option small { display: block; }
+.role-option strong { font-size: 15px; }
+.role-option small { margin-top: 4px; color: rgba(255,255,255,.56); font-size: 11px; }
+.role-option > svg { color: #b7e678; }
+.role-login-note { margin-top: 22px; color: rgba(255,255,255,.38); font: 10px 'DM Mono'; letter-spacing: .08em; text-transform: uppercase; }
+.buyer-page { min-height: 100svh; padding: 54px clamp(20px, 6vw, 84px); background: #061c14; color: #fffdf5; }
+.buyer-hero { display: flex; align-items: stretch; justify-content: space-between; gap: 24px; margin: 30px 0 34px; padding: 24px; overflow: hidden; }
+.buyer-hero > div { max-width: 560px; padding: 18px 0 12px; }
+.buyer-hero h2 { margin: 16px 0 10px; font-size: clamp(2rem, 4vw, 4rem); letter-spacing: -.07em; line-height: .98; }
+.buyer-hero p { max-width: 470px; color: rgba(255,255,255,.58); line-height: 1.55; }
+.buyer-hero img { width: min(38%, 330px); min-height: 220px; object-fit: cover; border-radius: 14px; }
+.buyer-lot-list { display: grid; gap: 12px; }
+.buyer-lot { display: grid; grid-template-columns: 76px 1fr auto; align-items: center; gap: 16px; padding: 12px; }
+.buyer-lot img { width: 76px; height: 76px; object-fit: cover; border-radius: 12px; }
+.buyer-lot h3 { margin: 5px 0; font-size: 17px; }
+.buyer-lot h3 small { color: rgba(255,255,255,.35); font-size: 12px; }
+.buyer-lot p { margin: 0; color: rgba(255,255,255,.5); font-size: 11px; }
+@media (max-width: 680px) { .role-login-inner { padding: 24px 18px 42px; justify-content: flex-start; } .role-login-copy { margin-top: 120px; } .role-login-copy h1 { font-size: clamp(3.3rem, 15vw, 5rem); } .buyer-page { padding: 30px 18px 54px; } .buyer-hero { flex-direction: column; } .buyer-hero img { width: 100%; height: 190px; min-height: 0; } .buyer-lot { grid-template-columns: 58px 1fr; } .buyer-lot img { width: 58px; height: 58px; } .buyer-lot .btn { grid-column: 2; justify-self: start; } }
