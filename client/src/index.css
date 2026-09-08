@@ -44,3 +44,35 @@
 .buyer-lot h3 small { color: rgba(255,255,255,.35); font-size: 12px; }
 .buyer-lot p { margin: 0; color: rgba(255,255,255,.5); font-size: 11px; }
 @media (max-width: 680px) { .role-login-inner { padding: 24px 18px 42px; justify-content: flex-start; } .role-login-copy { margin-top: 120px; } .role-login-copy h1 { font-size: clamp(3.3rem, 15vw, 5rem); } .buyer-page { padding: 30px 18px 54px; } .buyer-hero { flex-direction: column; } .buyer-hero img { width: 100%; height: 190px; min-height: 0; } .buyer-lot { grid-template-columns: 58px 1fr; } .buyer-lot img { width: 58px; height: 58px; } .buyer-lot .btn { grid-column: 2; justify-self: start; } }
+
+
+/* Role chooser visual treatment */
+.role-login {
+  background: #061c14 url('/assets/agriloop-hero-desktop.webp') center / cover no-repeat;
+}
+.role-login-glow {
+  opacity: 1;
+  background:
+    linear-gradient(90deg, rgba(3, 15, 28, .94), rgba(8, 32, 58, .72) 48%, rgba(10, 41, 76, .48)),
+    linear-gradient(180deg, rgba(12, 43, 78, .58), rgba(3, 18, 32, .88));
+}
+.role-login-inner::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 78% 28%, rgba(72, 164, 255, .28), transparent 32%);
+}
+.role-login-copy h1 em { color: #8ed0ff; }
+.role-option:hover { border-color: rgba(142, 208, 255, .72); background: rgba(70, 150, 220, .16); }
+.role-option .role-icon { color: #071c14; background: #a8ddff; }
+.role-option > svg { color: #a8ddff; }
+@media (max-width: 680px) {
+  .role-login { background-image: url('/assets/agriloop-hero-mobile.webp'); background-position: 64% center; }
+  .role-login-glow {
+    background:
+      linear-gradient(180deg, rgba(3, 15, 28, .78), rgba(8, 32, 58, .58) 42%, rgba(3, 18, 32, .95)),
+      linear-gradient(90deg, rgba(8, 38, 68, .62), rgba(4, 19, 35, .72));
+  }
+}
