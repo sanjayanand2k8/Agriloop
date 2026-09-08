@@ -88,3 +88,29 @@
   .produce-tile { min-height: 104px; padding: 9px; }
   .produce-tile small { font-size: 7px; }
 }
+
+
+/* Desktop CTA alignment: one clean baseline and equal button height. */
+@media (min-width: 821px) {
+  .hero-actions {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .hero-actions .btn {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 820px) {
+  .hero-actions .btn {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
