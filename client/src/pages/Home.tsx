@@ -49,7 +49,7 @@ function LotPassport() {
         <ShieldCheck size={18} className="muted-icon" />
       </div>
       <div className="lot-main">
-        <img className="crop-thumb" src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=420&q=85" alt="Fresh tomatoes in a harvest crate" />
+        <img className="crop-thumb" src="/assets/agriloop-tomato.webp" alt="Fresh tomatoes in a harvest crate" />
         <div className="lot-copy">
           <h2>Tomato</h2>
           <p>Grade A <span>·</span> Fresh Harvest</p>
@@ -139,7 +139,7 @@ export default function Home() {
 
   return (
     <main id="top" className="hero-shell">
-      <video className="hero-video" autoPlay loop muted playsInline poster="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2200&q=85" aria-hidden="true">
+      <video className="hero-video" autoPlay loop muted playsInline poster="/assets/agriloop-hero-field.webp" aria-hidden="true">
         <source src="https://videos.pexels.com/video-files/5532768/5532768-hd_1920_1080_25fps.mp4" type="video/mp4" />
       </video>
       <div className="video-fallback" aria-hidden="true" />
